@@ -30,6 +30,8 @@ module.exports = (robot) ->
 				response += "Garage #{garage.garage} #{garage.perc}%\n"
 			if smallest > 90
 				response += "http://i.imgur.com/OXlUFE1.jpg\n"
+			if msg.message.room in ['random']
+				response += '\n"_Did you know that you can private message me for this?_"\n' 
 			msg.send(response)
 	
 	robot.respond /where should I park?/i, (msg)->		
