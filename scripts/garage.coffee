@@ -54,9 +54,9 @@ module.exports = (robot) ->
 						thisGarage.perc = percent
 				thisGarage.garage = ($(obj).find('.dxgv').html()).replace("Garage ", '')
 				garages[i] = thisGarage
-			
-			if robot.brain.get('pubsubCheckDate') isnt (new Date()).toDateString()
-				robot.brain.set('pubsubCheckDate', (new Date()).toDateString())
+			date = (new Date()).toDateString()
+			if robot.brain.get('pubsubCheckDate') isnt date
+				robot.brain.set('pubsubCheckDate', date)
 				r2 = request 'http://www.arepublixchickentendersubsonsale.com/', (error2, response2, body2) ->
 					$ = cheerio.load(body2);
 					if $.html().includes("onsale:yes")
